@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<style>
+      body { padding-top: 70px; 
+      		}
+
+     .fonts {color:white;}
+    </style>
+
+	<title>Niel Cuevas</title>
+	<%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body style="background-color: black;">
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				
+				<%= link_to "Niel Cuevas", root_url, class: "navbar-brand fonts" %>
+			</div>
+	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<%- if current_user %>
+					<li>
+						
+						<%= link_to "Make Post", new_post_path, class: "fonts" %>
+					</li>
+
+						<li>
+						<%= link_to "Logout", destroy_user_session_path, class: "fonts", method: :delete, data: {confirm: "Are you sure to logout?"}   %>
+						</li>
+					<% else %>
+					<li>
+						<%= link_to "Login", new_user_session_path, class: "fonts" %>
+					</li>
+					<li>
+						<%= link_to "Signup", new_user_registration_path, class: "fonts" %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</nav>
+             
+<!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+        		<%flash.each do |a,b| %>
+        		<div class="alert alert-success"> <%= b %> </div>
+        		<% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<center>
+<br>
+		<h2 style="background-color: white; width: 50%; height: 50px;  border-radius: 16px 16px 1px 1px; padding-top: 10px;">Tweets</h2>
+<% @posts.each do |x| %>
+	<div style="background-color: white; width: 50%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><br><h4>
+		<b style="text-align:left; color:#0d53bf;"> <%= current_user.email %> </b><br><br>
+		<%= x.description %></h4>
+		<br>
+		<%= image_tag x.image.url(:medium) %>
+		<br>
+		<hr>
+		<br>
+	</div>
+
+<% end %>
+</center>
